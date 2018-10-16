@@ -1,0 +1,28 @@
+<div class="mainfeed-main fadeIn">
+    <div class="card fadeIn poster">
+        <div class="horizontalRow fadeIn first">
+            <input type="text" [(ngModel)]="newNote.note">
+        </div>
+        <div class="horizontalRow fadeIn second">
+            <button class="saveNewbtn" (click)="saveNewNote()">Save Note</button>
+        </div>
+    </div>
+    <div class="card fadeIn" *ngFor="let item of notes; let ind=index">
+        <div class="card-header fadeIn first">
+            <h3 class="block">{{currentUser.name}}</h3>
+            <button *ngIf="!item.editing" class="block align-right edit-button" (click)="editItem(item)">
+                <h3 >edit</h3>
+            </button>
+            <button *ngIf="item.editing" class="block align-right edit-button" [disabled]="!item.canSave" (click)="saveItem(item,ind)">
+                    <h3 *ngIf="item.editing">save</h3>
+                </button>
+        </div>
+        <div class="card-body fadeIn second">
+            <p *ngIf="!item.editing" class="card-text">{{item.note}}</p>
+            <input *ngIf="item.editing" type="text" [(ngModel)]="item.note" (input)="checkIfItemCanSave(item)">
+        </div>
+        <div class="card-footer fadeIn third">
+            {{item.createdAt}}
+        </div>
+    </div>
+</div>
