@@ -1,4 +1,4 @@
-# Angular Universal Starter
+# Angular Universal Note App with Spring Service...
 
 ![Angular Universal](https://angular.io/assets/images/logos/concept-icons/universal.png)
 
